@@ -1,3 +1,13 @@
+#### Preamble ####
+# Purpose: Cleans the raw data pertaining to the Canadian election and saves 
+# the clean data as a cleaned CSV file. 
+# Author: Group 19
+# Date: 5 September 2024
+# Prerequisites: Have installed the necessary packages and have ran download_data.R before.
+
+#### Workspace setup ####
+# install.packages("tidyverse")
+# install.packages("janitor")
 library(tidyverse)
 library(janitor)
 
@@ -24,7 +34,6 @@ cleaned_canadian_elections <-
     elected_candidate = elected_candidate_candidat_elu
   )
 
-
 cleaned_canadian_elections <-
   cleaned_canadian_elections |>
   separate(col = elected_candidate,
@@ -32,6 +41,7 @@ cleaned_canadian_elections <-
            sep = "/") |>
   select(-Other)
 
+# Changes French names to English names
 cleaned_canadian_elections <- 
   cleaned_canadian_elections |>
   mutate(party = recode(party, "Libéral" = "Liberal",
@@ -41,6 +51,7 @@ cleaned_canadian_elections <-
          "Parti Vert" = "Green Party")
          )
 
+# Saves the cleaned data as a CSV 
 write_csv(
   x = cleaned_canadian_elections,
   file = "cleaned_canadian_elections.csv"
