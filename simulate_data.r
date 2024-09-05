@@ -2,7 +2,7 @@
 # Purpose: Simulates dataset pertaining to the Canadian election
 # Author: Group 19
 # Date: 5 September 2024
-# Prerequisites: Know where to get Canadian election data.
+# Prerequisites: Have installed the necessary packages.
 
 #### Workspace setup ####
 # install.packages("tidyverse")
