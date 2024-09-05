@@ -10,6 +10,9 @@
 library(tidyverse)
 library(janitor)
 
+# Set seed
+set.seed(646)
+
 # Simulate data
 simulated_data <-
   tibble(
