@@ -11,18 +11,15 @@
 library(tidyverse)
 library(janitor)
 
-# Load the raw data
 raw_canadian_elections <-
   read_csv(
     file = "canadian_elections.csv",
     show_col_types = FALSE
   )
 
-# Clean the column names
 cleaned_canadian_elections <-
   clean_names(raw_canadian_elections)
 
-# Select relevant columns and rename them
 cleaned_canadian_elections <- 
   cleaned_canadian_elections |>
   select(
@@ -41,7 +38,6 @@ cleaned_canadian_elections <-
            sep = "/") |>
   select(-Other)
 
-# Changes French names to English names
 cleaned_canadian_elections <- 
   cleaned_canadian_elections |>
   mutate(party = recode(party, "Libéral" = "Liberal",
@@ -51,7 +47,6 @@ cleaned_canadian_elections <-
          "Parti Vert" = "Green Party")
          )
 
-# Saves the cleaned data as a CSV 
 write_csv(
   x = cleaned_canadian_elections,
   file = "cleaned_canadian_elections.csv"
